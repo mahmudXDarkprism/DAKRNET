@@ -1,3 +1,9 @@
+import sys
+if sys.version_info >= (3, 12):
+    import telegram
+    # Patch for Python 3.12+
+    if not hasattr(telegram.ext.Updater, '_Updater__polling_cleanup_cb'):
+        telegram.ext.Updater._Updater__polling_cleanup_cb = None
 import logging
 import threading
 import time
